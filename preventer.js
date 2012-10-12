@@ -1,18 +1,17 @@
 $('input[type="text"]').blur(function(){
-    alert('this does what I want it to');
+    alert(generateExpression(10, 2));
 });
 
 
 function generateExpression(highestOperand, numberOfOperands){
     var operands = ['+', '-', '/', '*'];
     var expression = '';
-    for(var i = 0; i < numberOfOperands - 1; i++)
-    {
+    for(var i = 0; i < numberOfOperands; i++){
 	var nextNum = generateRandomInt(highestOperand + 1);
-	if(generateRandomNumber(2) == 1){
+	if(generateRandomInt(2) == 1){
 	    nextNum *= -1;
 	}
-	var operand = generateRandomInt(operands.length);
+	var operand = operands[generateRandomInt(operands.length)];
 	expression = expression + "" + nextNum + " " + operand + " ";
     }
     var lastNum = generateRandomInt(highestOperand + 1);
@@ -20,6 +19,6 @@ function generateExpression(highestOperand, numberOfOperands){
     return expression;
 }
 
-function generateRandomInt(int high){
+function generateRandomInt(high){
     return Math.floor(Math.random() * high);
 }
