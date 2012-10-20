@@ -1,37 +1,22 @@
 (function(){
-		if(typeof jQuery == undefined){
-				loadjQuery("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", main);
-		}
-		else{
-				main();
-		}
+		main();
 		
-		function loadjQuery(jQueryLocation, callback){
-				var scriptTag = document.createElement("script");
-				scriptTag.src = jQueryLocation;
-				scriptTag.type = "text/javascript";
-				document.getElementsByTagName("head")[0].appendChild(scriptTag);
+		var numbersToCheckAgainst = getSavedPasswords();
 
-				var checkReady = function(callbackOnceLoaded){
-						if(typeof jQuery == undefined){
-								window.setTimeout(function(){ checkReady(callbackOnceLoaded); }, 100);
-						}
-						else{
-								callbackOnceLoaded();
-						}
-				};
-
-				checkReady(callback);
-		}
-		
 		function main(){
-				alert("calling main still?");
-				appendStyleSheets();
+				//appendStyleSheets();
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
-						var expressionToSolve = generateExpression(13, 4);
-						var valueOfExpression = eval(expressionToSolve);
-						alert(expressionToSolve);
+						
+						if($.inArray($(this).val(), numbersToCheckAgainst) != -1){
+								alert(numbersToCheckAgainst);
+								var expressionToSolve = generateExpression(13, 4);
+								var valueOfExpression = eval(expressionToSolve);
+								alert(expressionToSolve);
+						}
+						else{
+								alert("not in the array");
+						}
 				});
 		}
 
@@ -71,6 +56,12 @@ function generateRandomInt(high){
 				linkTag.rel="stylesheet";
 				linkTag.type="text/css";
 				document.getElementsByTagName("head")[0].appendChild(linkTag);
+		}
+
+		function getSavedPasswords(){
+				var arrayOfPasswords = Array();
+				arrayOfPasswords[0]="1234";
+				return arrayOfPasswords;
 		}
 
 })();
