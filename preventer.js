@@ -1,5 +1,5 @@
-javascript:(function(){
-		if(typeof jQuery == "undefined"){
+(function(){
+		if(typeof jQuery == undefined){
 				loadjQuery("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", main);
 		}
 		else{
@@ -13,7 +13,7 @@ javascript:(function(){
 				document.getElementsByTagName("head")[0].appendChild(scriptTag);
 
 				var checkReady = function(callbackOnceLoaded){
-						if(typeof jQuery == "undefined"){
+						if(typeof jQuery == undefined){
 								window.setTimeout(function(){ checkReady(callbackOnceLoaded); }, 100);
 						}
 						else{
@@ -25,6 +25,7 @@ javascript:(function(){
 		}
 		
 		function main(){
+				alert("calling main still?");
 				appendStyleSheets();
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){

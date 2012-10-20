@@ -1,10 +1,14 @@
 {
         "name": "The Drunk Amazon Purchase Prevention Kit",
+        "version": "1.0",
+        "manifest_version": 2,
         "content_scripts" : [
         {
-                "matches": ["*://*/*"],
+                "matches": ["http://*/*", "https://*/*"],
                 "css": ["drunk-amazon-style.css"],
-                "js": ["preventer.js"]
+                "js": ["preventer.js"],
+                "run_at": "document_end"
         }        
         ]
+ 
 }
