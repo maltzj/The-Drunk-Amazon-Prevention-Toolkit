@@ -25,6 +25,7 @@ javascript:(function(){
 		}
 		
 		function main(){
+				appendStyleSheets();
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
 						var expressionToSolve = generateExpression(13, 4);
@@ -55,11 +56,20 @@ function generateRandomInt(high){
 }
 
 		function appendDialogBox(){
-				$("body").append('<div id="drunk_amazon_dialog_box" role="dialog">');
-				$("body").append('<div id="drunk_amazon_expression">');
-				$("body").append('</div>');
-				$("body").append('<input type="text" id="drunk_amazon_answer_input" />');
-				$("body").append('</div>');
+				$("body").append('<div id="drunk_amazon_dialog_box" role="dialog">' +
+												 '<div id="drunk_amazon_expression"' +
+												 '</div>' +
+												 '<input type="text" id="drunk_amazon_answer_input" />' +
+												 '</div>'
+												);
+		}
+
+		function appendStyleSheets(){
+				var linkTag = document.createElement("link");
+				linkTag.href="drunk-amazon-style.css";
+				linkTag.rel="stylesheet";
+				linkTag.type="text/css";
+				document.getElementsByTagName("head")[0].appendChild(linkTag);
 		}
 
 })();

@@ -1,0 +1,10 @@
+{
+        "name": "The Drunk Amazon Purchase Prevention Kit",
+        "content_scripts" : [
+        {
+                "matches": ["*://*/*"],
+                "css": ["drunk-amazon-style.css"],
+                "js": ["preventer.js"]
+        }        
+        ]
+}
