@@ -7,7 +7,7 @@
 				//appendStyleSheets();
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
-						
+						alert("numbersToCheckAgainst is " + numbersToCheckAgainst[0]);
 						if($.inArray($(this).val(), numbersToCheckAgainst) != -1){
 								alert(numbersToCheckAgainst);
 								var expressionToSolve = generateExpression(13, 4);
@@ -15,7 +15,7 @@
 								alert(expressionToSolve);
 						}
 						else{
-								alert("not in the array");
+						//do nothing
 						}
 				});
 		}
@@ -59,9 +59,10 @@ function generateRandomInt(high){
 		}
 
 		function getSavedPasswords(){
-				var arrayOfPasswords = Array();
-				arrayOfPasswords[0]="1234";
-				return arrayOfPasswords;
+				chrome.extension.sendMessage({"type" : "storedPasswords"}, 
+																		 function(response){
+																				 alert("response is " + response.passwords);
+																				 return response.passwords;});
 		}
 
 })();
