@@ -61,7 +61,6 @@ function generateRandomInt(high){
 		function getSavedPasswords(){
 				chrome.extension.sendMessage({"type" : "storedPasswords"}, 
 																		 function(response){
-																				 alert("response is " + response.passwords);
 																				 return response.passwords;});
 		}
 
