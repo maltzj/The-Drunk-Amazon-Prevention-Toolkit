@@ -7,7 +7,7 @@
 				//appendStyleSheets();
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
-						alert("numbersToCheckAgainst is " + numbersToCheckAgainst[0]);
+						alert("numbersToCheckAgainst is " + numbersToCheckAgainst[0] + " and " + numbersCheckingAgainst[1]);
 						if($.inArray($(this).val(), numbersToCheckAgainst) != -1){
 								alert(numbersToCheckAgainst);
 								var expressionToSolve = generateExpression(13, 4);
