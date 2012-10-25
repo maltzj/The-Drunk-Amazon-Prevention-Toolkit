@@ -14,6 +14,12 @@
         {
                 "scripts" : ["background/background.js"],
                 "persistent" : false
+        },
+        "browser_action":
+        {
+                "default_icon": "images/icon.jpg",      
+                "default_title": "Protected Credit Cards",
+                "default_popup": "listPasswords.html"
         }
  
 }
