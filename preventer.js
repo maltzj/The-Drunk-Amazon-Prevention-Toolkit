@@ -5,7 +5,7 @@
 		function main(){
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
-						checkIfCardIsStored($(this).val());
+						checkIfCardIsStored($(this));
 				});
 		}
 
@@ -35,23 +35,48 @@ function generateRandomInt(high){
 												 '<div id="drunk_amazon_expression">' +
 												 '</div>' +
 												 '<input type="text" id="drunk_amazon_answer_input" />' +
-												 '<button class="btn" style="clear: both;">Answer</button>' +
+												 '<button id="drunk_amazon_answer_button" class="btn" style="clear: both;">Answer</button>' +
 												 '<br />' +
 												 '</div>'
 												);
 		}
 
 
-		function checkIfCardIsStored(cardNumber){
+		function checkIfCardIsStored(inputObject){
 				chrome.extension.sendMessage({"type" : "storedPasswords"}, 
 																		 function(response){
-																				 if($.inArray(cardNumber+"", JSON.parse(response.passwords)) != -1){
-																							var expressionToSolve = generateExpression(13, 4);
-																							$('#drunk_amazon_expression').text(expressionToSolve);
-																							var valueOfExpression = eval(expressionToSolve);
-																							$('#drunk_amazon_dialog_box').modal({show: true});
-																					}
+																				 if($.inArray(inputObject.val()+"", JSON.parse(response.passwords)) != -1){
+																						 var expressionToSolve = generateExpression(13, 4);
+																						 var valueOfExpression = eval(expressionToSolve);
+																						 while(isNaN(valueOfExpression) || valueOfExpression == Number.POSITIVE_INFINITY || valueOfExpression == Number.NEGATIVE_INFINITY){
+																								 expressionToSolve = generateExpression(13, 4);
+																								 valueOfExpression = eval(expressionToSolve);
+																						 }	 
+																						 $('#drunk_amazon_expression').text(expressionToSolve);
+																						 valueOfExpression = Math.round(valueOfExpression);
+																						 alert(valueOfExpression);
+																						 $('#drunk_amazon_answer_input').val('');
+																						 $('#drunk_amazon_answer_button').unbind('click');
+																						 $('#drunk_amazon_answer_button').click(function(){
+																								 if(checkButtonEquality(valueOfExpression)){
+																										 $('#drunk_amazon_dialog_box').modal('hide');
+																								 }
+																								 else{
+																										 alert('Sorry, you\'re too drunk to be buying stuff from Amazon');
+																										 inputObject.val("");
+																										 $('#drunk_amazon_dialog_box').modal('hide');
+																								}
+																								 
+																						 });
+																						 $('#drunk_amazon_dialog_box').modal({show: true});
+																						 
+																				 }
 																		 });
 		}
+
+		function checkButtonEquality(value){
+				return value == $('#drunk_amazon_answer_input').val();
+		}
+																		
 
 })();
