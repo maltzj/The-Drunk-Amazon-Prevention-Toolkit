@@ -1,18 +1,14 @@
 (function(){
 		main();
 		
-		var numbersToCheckAgainst = getSavedPasswords();
 
 		function main(){
-				//appendStyleSheets();
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
-						alert("numbersToCheckAgainst is " + numbersToCheckAgainst[0] + " and " + numbersCheckingAgainst[1]);
+						var numbersToCheckAgainst = getSavedPasswords();
 						if($.inArray($(this).val(), numbersToCheckAgainst) != -1){
-								alert(numbersToCheckAgainst);
 								var expressionToSolve = generateExpression(13, 4);
 								var valueOfExpression = eval(expressionToSolve);
-								alert(expressionToSolve);
 						}
 						else{
 						//do nothing
@@ -50,13 +46,6 @@ function generateRandomInt(high){
 												);
 		}
 
-		function appendStyleSheets(){
-				var linkTag = document.createElement("link");
-				linkTag.href="drunk-amazon-style.css";
-				linkTag.rel="stylesheet";
-				linkTag.type="text/css";
-				document.getElementsByTagName("head")[0].appendChild(linkTag);
-		}
 
 		function getSavedPasswords(){
 				chrome.extension.sendMessage({"type" : "storedPasswords"}, 
