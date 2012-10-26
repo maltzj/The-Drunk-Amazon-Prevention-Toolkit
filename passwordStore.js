@@ -1,13 +1,12 @@
 (function(){
-		$("#next-password").on("click", ".btn", function(){
-				alert("into this??");
+		$("#next-password").on("click", "button",  function(event){
 				var newCardNumber = $("#next-card-number").val();
 				chrome.extension.sendMessage({"type" : "addCardNumber",
 																			"cardNumber": newCardNumber},
 																		 function(response){
 																				 if(response.result === true){
 																						 $('#password-lists').append('<div class="stored-password">' + newCardNumber + '</div>');
-																						 $('btn').val("");
+																						 $('#next-card-number').val("");
 																				 }
 																				 else{
 																						 //figure out what to do
@@ -25,8 +24,8 @@
 																						 $('#password-lists').append('<div class="stored-password">' + passwordsArray[i] + '</div>');
 																				 }
 																		 }
-																		 $('#password-lists').append('<input type="text" id="next-card-number" /><button class="btn">Add</button>');
-																		 
+																		 $('#next-password').append('<input type="text" id="next-card-number" /><button id="add-card-button">Add</button>');
+																		 console.dir($(".btn").data('events'));
 																 });
 })();
  //send a message to the extension to get the list of all things
