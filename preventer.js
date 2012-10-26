@@ -5,16 +5,7 @@
 		function main(){
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
-						alert("herpderp?");
-						$('#drunk_amazon_dialog_box').modal({show: true});
-						var numbersToCheckAgainst = getSavedPasswords();
-						if($.inArray($(this).val(), numbersToCheckAgainst) != -1){
-								var expressionToSolve = generateExpression(13, 4);
-								var valueOfExpression = eval(expressionToSolve);
-						}
-						else{
-						//do nothing
-						}
+						checkIfCardIsStored($(this).val());
 				});
 		}
 
@@ -40,19 +31,27 @@ function generateRandomInt(high){
 }
 
 		function appendDialogBox(){
-				$("body").append('<div id="drunk_amazon_dialog_box" role="dialog">' +
-												 '<div id="drunk_amazon_expression"' +
+				$("body").append('<div id="drunk_amazon_dialog_box" class="modal" role="dialog">' +
+												 '<div id="drunk_amazon_expression">' +
 												 '</div>' +
 												 '<input type="text" id="drunk_amazon_answer_input" />' +
+												 '<button class="btn" style="clear: both;">Answer</button>' +
+												 '<br />' +
 												 '</div>'
 												);
 		}
 
 
-		function getSavedPasswords(){
+		function checkIfCardIsStored(cardNumber){
 				chrome.extension.sendMessage({"type" : "storedPasswords"}, 
 																		 function(response){
-																				 return response.passwords;});
+																				 if($.inArray(cardNumber+"", JSON.parse(response.passwords)) != -1){
+																							var expressionToSolve = generateExpression(13, 4);
+																							$('#drunk_amazon_expression').text(expressionToSolve);
+																							var valueOfExpression = eval(expressionToSolve);
+																							$('#drunk_amazon_dialog_box').modal({show: true});
+																					}
+																		 });
 		}
 
 })();
