@@ -32,11 +32,17 @@ function generateRandomInt(high){
 
 		function appendDialogBox(){
 				$("body").append('<div id="drunk_amazon_dialog_box" class="modal" role="dialog">' +
-												 '<div id="drunk_amazon_expression">' +
+												 '<div id="drunk_amazon_header">' +
+												 '<p class="lead">Hold on there buddy, please solve this to continue</p>' +
 												 '</div>' +
-												 '<input type="text" id="drunk_amazon_answer_input" />' +
-												 '<button id="drunk_amazon_answer_button" class="btn" style="clear: both;">Answer</button>' +
-												 '<br />' +
+												 '<hr />' +
+												 '<span style="font-weight: bold">Expression: </span>' + 
+												 '<span class=".expression" id="drunk_amazon_expression">' +
+												 '</span>' +
+												 '<label>Answer: </label><input type="text" id="drunk_amazon_answer_input" />' +
+												 '<div class="modal-footer">' +
+												 '<button id="drunk_amazon_answer_button" class="drunk_amazon_btn" style="clear: both;">Answer</button>' +
+												 '</div>' +
 												 '</div>'
 												);
 		}
@@ -54,7 +60,6 @@ function generateRandomInt(high){
 																						 }	 
 																						 $('#drunk_amazon_expression').text(expressionToSolve);
 																						 valueOfExpression = Math.round(valueOfExpression);
-																						 alert(valueOfExpression);
 																						 $('#drunk_amazon_answer_input').val('');
 																						 $('#drunk_amazon_answer_button').unbind('click');
 																						 $('#drunk_amazon_answer_button').click(function(){
