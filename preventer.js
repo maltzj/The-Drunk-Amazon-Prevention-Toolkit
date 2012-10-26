@@ -5,6 +5,8 @@
 		function main(){
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
+						alert("herpderp?");
+						$('#drunk_amazon_dialog_box').modal({show: true});
 						var numbersToCheckAgainst = getSavedPasswords();
 						if($.inArray($(this).val(), numbersToCheckAgainst) != -1){
 								var expressionToSolve = generateExpression(13, 4);

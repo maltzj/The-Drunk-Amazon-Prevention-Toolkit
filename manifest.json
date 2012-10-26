@@ -6,7 +6,7 @@
         {
                 "matches": ["http://*/*", "https://*/*"],
                 "css": ["drunk-amazon-style.css"],
-                "js": ["jquery-1.8.0.min.js", "preventer.js"],
+                "js": ["jquery-1.8.0.min.js", "bootstrap.min.js", "preventer.js"],
                 "run_at": "document_end"
         }        
         ],
