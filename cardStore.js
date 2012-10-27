@@ -24,7 +24,7 @@
 																						 $('#password-lists').append('<div class="stored-password">' + passwordsArray[i] + '</div>');
 																				 }
 																		 }
-																		 $('#next-password').append('<input type="text" id="next-card-number" /><button id="add-card-button">Add</button>');
+																		 $('#next-password').append('<span><input type="text" id="next-card-number" /><button class="drunk-amazon-btn" id="add-card-button">Add</button></span>');
 																 });
 })();
  //send a message to the extension to get the list of all things
