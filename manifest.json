@@ -19,7 +19,7 @@
         {
                 "default_icon": "images/icon.jpg",      
                 "default_title": "Protected Credit Cards",
-                "default_popup": "listPasswords.html"
+                "default_popup": "listCards.html"
         }
  
 }
