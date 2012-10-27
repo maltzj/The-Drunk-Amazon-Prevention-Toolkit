@@ -1,7 +1,6 @@
 (function(){
 		main();
 		
-
 		function main(){
 				appendDialogBox();
 				$('input[type="text"]').blur(function(){
@@ -31,17 +30,16 @@ function generateRandomInt(high){
 }
 
 		function appendDialogBox(){
-				$("body").append('<div id="drunk_amazon_dialog_box" class="modal" role="dialog">' +
-												 '<div id="drunk_amazon_header">' +
-												 '<p class="lead">Hold on there buddy, please solve this to continue</p>' +
+				$("body").append('<div id="drunk-amazon-dialog-box" class="drunk-amazon-modal" role="dialog">' +
+												 '<div id="drunk-amazon-header">' +
+												 '<p class="drunk-amazon-lead">Cool your jets buddy, prove you\'re sober enough to buy by solving this</p>' +
 												 '</div>' +
 												 '<hr />' +
-												 '<span style="font-weight: bold">Expression: </span>' + 
-												 '<span class=".expression" id="drunk_amazon_expression">' +
+												 '<span class="expression" id="drunk-amazon-expression">' +
 												 '</span>' +
-												 '<label>Answer: </label><input type="text" id="drunk_amazon_answer_input" />' +
-												 '<div class="modal-footer">' +
-												 '<button id="drunk_amazon_answer_button" class="drunk_amazon_btn" style="clear: both;">Answer</button>' +
+												 '<label class="drunk-amazon-label">Answer: </label><input type="text" id="drunk-amazon-answer-input" class="drunk-amazon-input" />' +
+												 '<div class="drunk-amazon-modal-footer">' +
+												 '<button id="drunk-amazon-answer-button" class="drunk-amazon-btn" style="clear: both;">Answer</button>' +
 												 '</div>' +
 												 '</div>'
 												);
@@ -58,29 +56,29 @@ function generateRandomInt(high){
 																								 expressionToSolve = generateExpression(13, 4);
 																								 valueOfExpression = eval(expressionToSolve);
 																						 }	 
-																						 $('#drunk_amazon_expression').text(expressionToSolve);
+																						 $('#drunk-amazon-expression').text(expressionToSolve);
 																						 valueOfExpression = Math.round(valueOfExpression);
-																						 $('#drunk_amazon_answer_input').val('');
-																						 $('#drunk_amazon_answer_button').unbind('click');
-																						 $('#drunk_amazon_answer_button').click(function(){
+																						 $('#drunk-amazon-answer-input').val('');
+																						 $('#drunk-amazon-answer-button').unbind('click');
+																						 $('#drunk-amazon-answer-button').click(function(){
 																								 if(checkButtonEquality(valueOfExpression)){
-																										 $('#drunk_amazon_dialog_box').modal('hide');
+																										 $('#drunk-amazon-dialog-box').modal('hide');
 																								 }
 																								 else{
 																										 alert('Sorry, you\'re too drunk to be buying stuff from Amazon');
 																										 inputObject.val("");
-																										 $('#drunk_amazon_dialog_box').modal('hide');
+																										 $('#drunk-amazon-dialog-box').modal('hide');
 																								}
 																								 
 																						 });
-																						 $('#drunk_amazon_dialog_box').modal({show: true});
+																						 $('#drunk-amazon-dialog-box').modal({show: true});
 																						 
 																				 }
 																		 });
 		}
 
 		function checkButtonEquality(value){
-				return value == $('#drunk_amazon_answer_input').val();
+				return value == $('#drunk-amazon-answer-input').val();
 		}
 																		
 

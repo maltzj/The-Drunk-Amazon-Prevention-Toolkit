@@ -25,7 +25,6 @@
 																				 }
 																		 }
 																		 $('#next-password').append('<input type="text" id="next-card-number" /><button id="add-card-button">Add</button>');
-																		 console.dir($(".btn").data('events'));
 																 });
 })();
  //send a message to the extension to get the list of all things
