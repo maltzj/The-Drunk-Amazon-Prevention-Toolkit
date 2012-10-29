@@ -47,9 +47,9 @@ function generateRandomInt(high){
 
 
 		function checkIfCardIsStored(inputObject){
-				chrome.extension.sendMessage({"type" : "storedPasswords"}, 
+				chrome.extension.sendMessage({"type" : "storedCards"}, 
 																		 function(response){
-																				 if($.inArray(inputObject.val()+"", JSON.parse(response.passwords)) != -1){
+																				 if($.inArray(inputObject.val()+"", JSON.parse(response.cards)) != -1){
 																						 var expressionToSolve = generateExpression(13, 4);
 																						 var valueOfExpression = eval(expressionToSolve);
 																						 while(isNaN(valueOfExpression) || valueOfExpression == Number.POSITIVE_INFINITY || valueOfExpression == Number.NEGATIVE_INFINITY){
