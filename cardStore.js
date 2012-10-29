@@ -1,11 +1,11 @@
 (function(){
 		$("#next-card").on("click", "button", function(event){
 				var newCardNumber = $("#next-card-number").val();
-				if(!(/^\d+$/.test(newCardNumber))){
+				if(!(/^\d+$/.test(newCardNumber)) && newCardNumber.length() == 16){ /*Test that the user entered a number*/
 						alert('please enter a valid card number, thanks :)');
 						return;
 				}
-				chrome.extension.sendMessage({"type" : "addCardNumber",
+				chrome.extension.sendMessage({"type" : "addCardNumber", //If it's all good add the card number and append it to the dom
 																			"cardNumber": newCardNumber},
 																		 function(response){
 																				 if(response.result === true){
@@ -19,13 +19,13 @@
 																																		'</div>');
 																						 $('#next-card-number').val("");
 																				 }
-																				 else{
+																				 else{ //if there was an error report it to the user
 																						 alert(response['error-message']);
 																				 }
 																		 });
 		});
 
-		$('#card-list').on('click', '.remove-card-button', function(event){
+		$('#card-list').on('click', '.remove-card-button', function(event){ 
 				var card = $(this).parent().find('.card-number');
 				chrome.extension.sendMessage({'type': 'removeCardNumber',
 																			'cardNumber' : card.text()},
