@@ -65,7 +65,7 @@ function generateRandomInt(high){
 																										 $('#drunk-amazon-dialog-box').modal('hide');
 																								 }
 																								 else{
-																										 alert('Sorry, you\'re too drunk to be buying stuff from Amazon');
+																										 alert('Sorry, you\'re too drunk to be buying stuff, try again when you are more sober');
 																										 inputObject.val("");
 																										 $('#drunk-amazon-dialog-box').modal('hide');
 																								}
