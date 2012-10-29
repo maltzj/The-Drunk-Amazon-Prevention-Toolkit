@@ -13,7 +13,7 @@
 																																		'<span class="card-number">' +
 																																		newCardNumber + 
 																																		'</span>' +
-																																		'<button class="remove-card-button drunk-amazon-pull-right drunk-amazon-btn">' +
+																																		'<button class="remove-card-button drunk-amazon-pull-right drunk-amazon-btn drunk-amazon-btn-danger">' +
 																																		'Remove' +
 																																		
 																																		'</div>');
