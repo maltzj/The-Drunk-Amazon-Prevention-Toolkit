@@ -2,4 +2,4 @@ Have you ever had a few (or more than a few) drinks and thought "you know what I
 
 This chrome extension will stop you from becoming a victim of drunk amazoning by forcing you to solve a math problem after you enter your credit card number anywhere.
 
-Installation instructions to follow (once I figure out how to actually, you know, make this into a chrome extension).
+This isn't really secure, it was more just made for kicks and giggles.  If you wanted to you could probably increase the security by hashing the values before you store them in local storage and then just display the last 4 digits to a user.  I'm kinda done with the project for now though.
