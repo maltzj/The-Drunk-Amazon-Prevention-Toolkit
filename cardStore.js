@@ -9,7 +9,14 @@
 																			"cardNumber": newCardNumber},
 																		 function(response){
 																				 if(response.result === true){
-																						 $('#card-list').append('<div class="stored-card">' + newCardNumber + '</div>');
+																						 $('#card-list').append('<div class="stored-card">'+
+																																		'<span class="card-number">' +
+																																		newCardNumber + 
+																																		'</span>' +
+																																		'<button class="remove-card-button drunk-amazon-pull-right drunk-amazon-btn">' +
+																																		'Remove' +
+																																		
+																																		'</div>');
 																						 $('#next-card-number').val("");
 																				 }
 																				 else{
@@ -45,9 +52,8 @@
 																																				 '<span class="card-number">' +
 																																				 cardNumsAsArray[i] + 
 																																				 '</span>' +
-																																				 '<button class="remove-card-button drunk-amazon-pull-right drunk-amazon-btn">' +
+																																				 '<button class="remove-card-button drunk-amazon-pull-right drunk-amazon-btn drunk-amazon-btn-danger">' +
 																																				 'Remove' +
-																																				 '</span>' +
 																																				 '</div>');
 																				 }
 																		 }
